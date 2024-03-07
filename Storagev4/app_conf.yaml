@@ -1,0 +1,12 @@
+# [V4] CHANGED TO USE KAFKA
+version: 1
+datastore:
+  hostname: acit3855group4kafka.eastus2.cloudapp.azure.com
+  port: 3306
+  user: imricebowl
+  password: imricebowl
+  db: events
+events:
+  hostname: acit3855group4kafka.eastus2.cloudapp.azure.com
+  port: 9092
+  topic: events

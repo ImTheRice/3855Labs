@@ -1,0 +1,11 @@
+version: 1
+datastore:
+  filename: stats.sqlite
+scheduler:
+  period_sec: 5
+eventstore:
+  url: http://localhost:8090
+eventstore1:
+  url: http://localhost:8090/events/vehicle-status
+eventstore2:
+  url: http://localhost:8090/events/incident-report
