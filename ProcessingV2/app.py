@@ -190,4 +190,4 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     init_scheduler()
     # uvicorn.run(app="app:app", host="0.0.0.0", port=8100, log_level="debug", reload=True)
-    app.run(port=8100, log_level='debug')
+    app.run(host='0.0.0.0', port=8100, log_level='debug')

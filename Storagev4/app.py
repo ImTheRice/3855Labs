@@ -186,4 +186,4 @@ if __name__ == '__main__':
     t1.setDaemon(True)
     t1.start()
     logger.info("Data Storage Service successfully started. Now running Flask app.")
-    app.run(port=8090)
+    app.run(host='0.0.0.0', port=8090)

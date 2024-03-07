@@ -86,4 +86,4 @@ app.add_api('Transit.yaml', strict_validation=True, validate_responses=True)
 
 if __name__ == '__main__':
     logger.debug("Starting application on port 8110")
-    app.run(port=8110)
+    app.run(host='0.0.0.0', port=8110)
