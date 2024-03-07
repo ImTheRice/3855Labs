@@ -3,8 +3,8 @@ version: 1
 datastore:
   hostname: acit3855group4kafka.eastus2.cloudapp.azure.com
   port: 3306
-  user: imricebowl
-  password: imricebowl
+  user: superbaddefault
+  password: superbaddefault
   db: events
 events:
   hostname: acit3855group4kafka.eastus2.cloudapp.azure.com

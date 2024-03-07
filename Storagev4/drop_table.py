@@ -6,8 +6,8 @@ def drop_tables():
     try:
         connection = mysql.connector.connect(
             host='acit3855group4kafka.eastus2.cloudapp.azure.com',
-            user='imricebowl',  
-            password='imricebowl',  
+            user='superbaddefault',  
+            password='superbaddefault',  
             database='events'
         )
         cursor = connection.cursor()

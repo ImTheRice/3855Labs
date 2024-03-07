@@ -5,8 +5,8 @@ def create_database():
     try:
         connection = mysql.connector.connect(
             host='acit3855group4kafka.eastus2.cloudapp.azure.com',
-            user='imricebowl',  # Adjust as per your configuration
-            password='imricebowl'  # Adjust as per your configuration
+            user='superbaddefault', 
+            password='superbaddefault'  
         )
         cursor = connection.cursor()
         cursor.execute("CREATE DATABASE IF NOT EXISTS events")
