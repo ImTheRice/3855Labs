@@ -1,14 +1,19 @@
 import mysql.connector
 from mysql.connector import Error
+import yaml
 
 def create_tables():
     try:
+        # Load configuration from YAML file
+        with open('./app_conf.yaml', 'r') as f:
+            config = yaml.safe_load(f)
+
         connection=None
         connection = mysql.connector.connect(
-            host='acit3855group4kafka.eastus2.cloudapp.azure.com',
-            user='superbaddefault',  
-            password='superbaddefault', 
-            database='events'
+            host=config['datastore']['hostname'],
+            user=config['datastore']['user'],
+            password=config['datastore']['password'],
+            database=config['datastore']['db']
         )
         print(connection)
 
@@ -49,4 +54,5 @@ def create_tables():
             connection.close()
 
 if __name__ == "__main__":
-    create_tables()
+    # Pass the path to the configuration file
+    create_tables('./config.yaml')

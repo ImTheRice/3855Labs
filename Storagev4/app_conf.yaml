@@ -1,7 +1,7 @@
-# [V4] CHANGED TO USE KAFKA
+# [V5] CONTAINER ADJUSTMENTS
 version: 1
 datastore:
-  hostname: acit3855group4kafka.eastus2.cloudapp.azure.com
+  hostname: host.docker.internal
   port: 3306
   user: superbaddefault
   password: superbaddefault

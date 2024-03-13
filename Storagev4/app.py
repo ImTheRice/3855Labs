@@ -13,7 +13,6 @@ import json
 from pykafka import KafkaClient
 from pykafka.common import OffsetType
 from threading import Thread
-
 from createdb import create_database
 from createtables import create_tables
 
@@ -38,7 +37,6 @@ with open('./log_conf.yaml', 'r') as f:
     logger = logging.getLogger('basicLogger')
     logger.addHandler(color_handler)
 
-
 # [V4] KAFKA
 logger.info(f"Connecting to MySQL database at {app_config['datastore']['hostname']}:{app_config['datastore']['port']}")
 try:
@@ -51,6 +49,15 @@ except Exception as e:
 # [V2] Transitioned to MySQL from SQLite for enhanced scalability and performance.
 DB_ENGINE = create_engine(f"mysql+pymysql://{app_config['datastore']['user']}:{app_config['datastore']['password']}@{app_config['datastore']['hostname']}:{app_config['datastore']['port']}/{app_config['datastore']['db']}")
 Session = sessionmaker(bind=DB_ENGINE)
+
+# [V5] Database initialization
+# create_database()  
+# Here is where you can try to create tables
+try:
+    create_tables()  # Call the function to create tables
+    logger.info("Tables created successfully.")
+except Exception as e:
+    logger.error(f"An error occurred while creating tables: {e}")
 
 
 # [V2] Added trace id and changed the messages to have color 
