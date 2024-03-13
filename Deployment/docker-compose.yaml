@@ -32,38 +32,38 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
-  # audit_v1:
-  #   build: ../AuditV1
-  #   ports:
-  #     - "8110:8110"
-  #   depends_on:
-  #     - kafka
-  #   restart: "always"
+  audit_v1:
+    build: ../AuditV1
+    ports:
+      - "8110:8110"
+    depends_on:
+      - kafka
+    restart: "always"
 
-  # receiver_v5:
-  #   build: ../ReceiverV5
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - kafka
-  #   restart: "always"
+  receiver_v5:
+    build: ../ReceiverV5
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+    restart: "always"
 
-  # processing_v2:
-  #   build: ../ProcessingV2
-  #   ports:
-  #     - "8100:8100"
-  #   depends_on:
-  #     - kafka
-  #     - storage_v4
-  #   restart: "always"
+  processing_v2:
+    build: ../ProcessingV2
+    ports:
+      - "8100:8100"
+    depends_on:
+      - kafka
+      - storage_v4
+    restart: "always"
 
-  # storage_v4:
-  #   build: ../Storagev4
-  #   ports:
-  #     - "8090:8090"
-  #   depends_on:
-  #     - db
-  #   restart: "always"
+  storage_v4:
+    build: ../Storagev4
+    ports:
+      - "8090:8090"
+    depends_on:
+      - db
+    restart: "always"
 
 volumes:
   db-data:
