@@ -14,6 +14,9 @@ from pykafka import KafkaClient
 from pykafka.common import OffsetType
 from threading import Thread
 
+from createdb import create_database
+from createtables import create_tables
+
 # [V2.5] Enhance logger to include color with colorlog
 color_handler = colorlog.StreamHandler()
 color_handler.setFormatter(colorlog.ColoredFormatter(
@@ -177,8 +180,13 @@ def process_messages():
                 reportIncidentEvent(payload)
             consumer.commit_offsets()
 
+
+
 app = connexion.FlaskApp(__name__, specification_dir='./')
 app.add_api('Transit.yaml', strict_validation=True, validate_responses=True)
+
+create_database()
+create_tables()
 
 if __name__ == '__main__':
     logger.info("Starting Data Storage Service.")

@@ -3,6 +3,7 @@ from mysql.connector import Error
 
 def create_tables():
     try:
+        connection=None
         connection = mysql.connector.connect(
             host='acit3855group4kafka.eastus2.cloudapp.azure.com',
             user='superbaddefault',  
@@ -42,6 +43,7 @@ def create_tables():
     except Error as e:
         print(f"Error creating tables: {e}")
     finally:
+        print("Done with Tables")
         if connection and connection.is_connected():
             cursor.close()
             connection.close()
