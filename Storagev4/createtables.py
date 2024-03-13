@@ -5,7 +5,7 @@ import yaml
 def create_tables():
     try:
         # Load configuration from YAML file
-        with open('./app_conf.yaml', 'r') as f:
+        with open('app_conf.yaml', 'r') as f:
             config = yaml.safe_load(f)
 
         connection=None
@@ -55,4 +55,4 @@ def create_tables():
 
 if __name__ == "__main__":
     # Pass the path to the configuration file
-    create_tables('./config.yaml')
+    create_tables()

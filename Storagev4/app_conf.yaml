@@ -1,7 +1,7 @@
 # [V5] CONTAINER ADJUSTMENTS
 version: 1
 datastore:
-  hostname: host.docker.internal
+  hostname: db
   port: 3306
   user: superbaddefault
   password: superbaddefault

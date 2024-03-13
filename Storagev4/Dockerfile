@@ -12,5 +12,7 @@ RUN pip3 install -v -r requirements.txt
     
 COPY . /app/
 
+RUN python3 createtables.py
+
 ENTRYPOINT [ "python3" ]
 CMD ["app.py"]
