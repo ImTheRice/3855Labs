@@ -17,7 +17,7 @@ import yaml
 # Local application/library-specific imports
 import connexion
 from base import Base
-from stats import Stats 
+from stats import Stats
 
 # [IMPORT] Enhance logger to include color with colorlog
 color_handler = colorlog.StreamHandler()
@@ -98,7 +98,7 @@ def populate_stats():
     )
     logger.info(response_vehicle)
     vehicle_events = response_vehicle.json() if response_vehicle.status_code == 200 else     logger.info("WARNING")
-    
+
 
     response_incident = requests.get(
         f"{app_config['eventstore']['url']}/events/incident-report",
@@ -115,7 +115,7 @@ def populate_stats():
 
     # Open a new session to commit updates to the database
     session = DBSession()
-    
+
     # Fetch the latest stats record or create a new one if none exists
     latest_stats = session.query(Stats).order_by(Stats.last_updated.desc()).first()
 
@@ -134,7 +134,7 @@ def populate_stats():
         on_time_score = event.get('onTimeScore', 0)
         max_distance_travelled = max(max_distance_travelled, distance)
         max_on_time_score = max(max_on_time_score, on_time_score)
-    
+
     # Update the stats object
 
     new_Stat = Stats(
@@ -153,7 +153,7 @@ def populate_stats():
 
 def get_stats():
     logger.info("GET request for stats started")
-    
+
     session = DBSession()
     latest_stat = session.query(Stats).order_by(Stats.last_updated.desc()).first()
     session.close()
@@ -162,9 +162,9 @@ def get_stats():
         logger.error("Statistics do not exist")
         # Return a JSON response indicating that statistics do not exist
         return jsonify({"error": "Statistics do not exist"}), 404
-    
+
     logger.info("Retrieving latest entry")
-    
+
     try:
         stats_dict = latest_stat.to_dict()
         logger.debug(f"Stats returned: {stats_dict}")
@@ -190,4 +190,4 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     init_scheduler()
     # uvicorn.run(app="app:app", host="0.0.0.0", port=8100, log_level="debug", reload=True)
-    app.run(host='0.0.0.0', port=8100, log_level='debug')
+    app.run(port=8100, log_level='debug')

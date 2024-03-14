@@ -56,7 +56,8 @@ services:
       - kafka
       - storage_v4
     restart: "always"
-
+    network_mode: "host"
+  
   storage_v4:
     build: ../Storagev4
     ports:
